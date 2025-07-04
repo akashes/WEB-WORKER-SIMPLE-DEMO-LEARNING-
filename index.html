@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Change color</button>
+    <button class="expensive">Expensive computation</button>
+    
+    <script>
+        const worker = new Worker('worker.js')
+        const button = document.getElementById('btn')
+        const calcButton =  document.querySelector('.expensive')
+
+        calcButton.addEventListener('click',()=>{
+
+            worker.postMessage('hello')
+            // let sum = 0
+            // for(let i=1;i<100000000000;i++){
+            //     sum+=i
+            // }
+            // alert(sum)
+            
+        })
+        worker.onmessage=(e)=>{
+            alert(e.data)
+        }
+        button.addEventListener('click',()=>{
+ document.body.style.backgroundColor =
+        document.body.style.backgroundColor === 'red' ? 'green' : 'red';        })
+    </script>
+</body>
+</html>
